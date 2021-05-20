@@ -1,5 +1,5 @@
 import random
-
+import sys
 menu = """
 Please,
  enter "r/R" for Rock
@@ -64,8 +64,15 @@ def get_ai():
         return "s"
 
 
-def get_winner(c1, c2):
-    if (c1 == "r" and c2 == "s") or (c1 == "s" and c2 == "p") or (c1 == "p" and c2 == "r"):
+def get_winner(c1, c2):          # Adding some comments ONLY when the user wins
+    if c1 == "r" and c2 == "s":
+        print("ROCK BREAKS SCISSOR")
+        return 1
+    elif c1 == "s" and c2 == "p":
+        print("SCISSOR CUTS PAPER")
+        return 1
+    elif c1 == "p" and c2 == "r":
+        print("PAPER WRAPS ROCK")
         return 1
     elif (c2 == "r" and c1 == "s") or (c2 == "s" and c1 == "p") or (c2 == "p" and c1 == "r"):
         return 2
@@ -81,7 +88,7 @@ while True:
     player = get_rps()
     player_AI = get_ai()
     x = get_winner(player, player_AI)
-    if x == 1:
+    if x == 1:                    # you may use function here
         print(f"{user_name} YOU WON !")
         player_count = player_count + 1
         print(f"{user_name} won {player_count} times VS AI won {playerAI_count} times")
@@ -98,4 +105,4 @@ while True:
     else:
         print(f"FINAL RESULT: {user_name} won {player_count} times VS AI won {playerAI_count} times")
         print("SEE YOU SOON, GOODBYE!")
-        break
+        sys.exit()     # instead of break
